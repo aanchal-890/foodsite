@@ -1,0 +1,16 @@
+{% extends 'food/navbar.html' %}
+{%load static%}
+{%block body%}
+<br><br>
+<form method="POST">
+    {%csrf_token%}
+    <h2>ARE you sure you want to delete {{item.item_name}}</h2>
+    <br>
+    <a class="btn btn-success" href="{% url 'food:index'%}">back</a>
+    <button class="btn btn-danger" type="submit">Confirm</button>
+</form>
+
+<br><br>
+<form
+{%endblock%}
+

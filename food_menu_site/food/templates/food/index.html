@@ -1,0 +1,29 @@
+{% extends 'food/navbar.html' %}
+{% load static %}
+
+
+{%block body%}
+<br><br>
+{%for i in item_list%}
+<br>
+<div class="row">
+    <div class="col-md-3 offset-md-2">
+        <image class="card" height="150px" src="{{i.item_image}}"/>
+
+    </div>
+    <div class="col-md-4">
+        <h2>{{i.item_name}}</h2>
+        <h4>{{i.item_desc}}</h4>
+        <h6>{{i.item_price}}</h6>
+
+    </div>
+    <div class="col-md-2">
+        <a href="{% url 'food:detail' i.id%}" class="btn btn-success">Details</a>
+        {% if request.user.is_superuser %}
+        <a href="{% url 'food:update_item' i.id%}" class="btn btn-alert">Edit</a>
+        {%endif%}
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
